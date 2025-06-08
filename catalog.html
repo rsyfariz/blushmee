@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Catalog - Blushmée</title>
+  <link rel="stylesheet" href="catalog.css" />
+</head>
+<body>
+ 
+  <header class="navbar">
+    <div class="logo">
+      <img src="logo.png" alt="Blushmée Logo">
+    </div>
+        <nav>
+          <a href="beranda.html">Home Page</a>
+          <a href="catalog.html">Catalog</a>
+          <a href="bantuan.html">Help</a>
+        </nav>
+        <div class="header-right">
+            <input type="text" placeholder="Search product" class="search-bar">
+            <div class="icons">
+              <a href="cart.html">
+                <img src="keranjang icon.svg" alt="Keranjang" width="24" height="24">
+              </a>
+              <a href="profil.html">
+                <img src="profile icon.svg" alt="Profil" width="24" height="24">
+              </a>
+            </div>
+          </div>
+</header>
+
+  <div class="catalog-container">
+    <div class="banner">
+      <img src = "gambar/banner.jpg" width="100%" >
+    </div>
+    <div class="product-grid">
+      <div class="product-card-lip">
+        <a href = "detailproduk4.html"><img src="gambar/lip.jpg" alt="Make Over Powerstay Glazed Lock Lip"></a>
+        <p>MAKE OVER POWERSTAY GLAZED LOCK LIP PIGMENT</p></a>
+      </div>
+      <div class="product-card-hyperblack">
+        <a href = "detailproduk3.html"><img src="gambar/hyperblack.jpg" alt="Make Over Hyperblack Superstay Liner 1 G"></a>
+        <p>MAKE OVER HYPERBLACK SUPERSTAY LINER 1 G</p>
+      </div>
+       <div class="product-card-cushion">
+        <a href = "detailproduk.html"><img src="gambar/cushion.jpg" alt="[New Shade] Make Over Hydrasty Lite Glow Cushion"></a>
+        <p>[NEW SHADES] MAKE OVER HYDRASTAY LITE GLOW CUSHION </p>
+      </div>
+       <div class="product-card-foundation">
+        <a href = "detailproduk2.html"><img src="gambar/foundation.jpg" alt="Powestay 24H Weightless Liquid Foundation"></a>
+        <p>POWERSTAY 24H WEIGHTLESS LIQUID FOUNDATION</p>
+      </div>
+    </div>
+  </div>
+
+<script>
+  const searchInput = document.querySelector('.search-cart input');
+  const productCards = document.querySelectorAll('.product-grid > div');
+
+  searchInput.addEventListener('input', function () {
+    const keyword = this.value.toLowerCase();
+
+    productCards.forEach(card => {
+      const productName = card.querySelector('p').textContent.toLowerCase();
+      if (productName.includes(keyword)) {
+        card.style.display = 'flex'; 
+      } else {
+        card.style.display = 'none';
+      }
+    });
+  });
+</script>
+
+
+</body>
+</html>

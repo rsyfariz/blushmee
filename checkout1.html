@@ -1,0 +1,493 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Checkout - Blushmée</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #F0F0F0;
+      color: #333;
+    }
+
+    .navbar {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        background: #FB6F92;
+        padding: 20px 40px;
+        color: rgb(0, 0, 0);
+      }
+
+      .logo {
+        max-width: 120px;
+        overflow: hidden;
+        flex-shrink: 0;
+        display: flex;
+        align-items: center;
+      }
+      
+      .logo img {
+        height: 60px;
+        width: auto;
+        max-width: 100%;
+        object-fit: contain;
+      }
+
+    .navbar nav a {
+      margin: 0 10px;
+      color: #000000;
+      text-decoration: none;
+      font-size: 20px;
+    }
+
+ .search-cart {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.search-wrapper {
+  position: relative;
+  width: 250px; 
+}
+
+.search-icon {
+  position: absolute;
+  top: 50%;
+  left: 20px; 
+  transform: translateY(-50%);
+  width: 16px;
+  height: 16px;
+  pointer-events: none; 
+  opacity: 0.5;
+}
+
+.search-wrapper input {
+  width: 100%;
+  padding: 8px 8px 8px 35px; 
+  border: none;
+  border-radius: 4px;
+  font-size: 16px;
+}
+
+.icons a {
+  margin-left: 10px;
+  display: inline-block;
+}
+
+.icon-img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.icon-img:hover {
+  transform: scale(1.1);
+}
+
+    .checkout-container {
+      display: flex;
+      padding: 40px;
+      background: linear-gradient(to right, #ffffff 40%, #fff 40%);
+      font-size: 20px;
+    }
+
+    .order-summary {
+      background-color: #FB6F92;
+      padding: 20px;
+      width: 35%;
+      border-radius: 10px;
+    }
+
+    .order-summary h2 {
+      margin-bottom: 20px;
+      font-size: 30px;
+    }
+
+    .product {
+        display: flex;
+        gap: 15px;
+        margin-bottom: 20px;
+        align-items: flex-start;
+      }
+  
+      .product img {
+        width: 220px;
+        height: auto;
+        object-fit: cover;
+        border-radius: 8px;
+      }
+
+      .total {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: 25px;
+        font-weight: bold;
+        margin-top: 15px;
+        padding: 0 10px;
+      }
+
+    .checkout-form {
+      width: 65%;
+      padding: 0 40px;
+    }
+
+    .checkout-form h2 {
+      margin-bottom: 20px;
+      font-size: 35px;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 15px;
+      margin-bottom: 20px;
+    }
+
+    .form-grid input {
+      padding: 10px;
+      border-radius: 5px;
+      border: 1px solid #ccc;
+    }
+
+    .payment-icons {
+      margin-bottom: 20px;
+    }
+
+    .payment-icons img {
+      margin-right: 10px;
+    }
+
+    .buttons {
+        display: flex;
+        justify-content: flex-end; 
+        gap: 15px; 
+        margin-top: 20px;
+    }
+
+    .cancel {
+      background-color: #E6E6E6;
+      font-family: 'Poppins', sans-serif;
+      padding: 14px 28px;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+
+    .complete {
+      background-color: #525FE1;
+      font-family: 'Poppins', sans-serif;
+      color: #fff;
+      padding: 14px 28px;
+      border: none;
+      border-radius: 6px;
+      cursor: pointer;
+    }
+   
+    .form-group {
+        margin-bottom: 15px;
+        padding-left: 10px;
+      }
+      input[type="text"],
+      input[type="email"],
+      input[type="tel"],
+      input[type="number"] {
+          width: 100%;
+          padding: 10px;
+          box-sizing: border-box;
+      }
+  
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: 500;
+    }
+
+    input[type="month"] {
+        padding: 10px;
+        border-radius: 5px;
+        border: 1px solid #ccc;
+        font-size: 14px;
+      }
+      
+
+    .payment-img {
+        width: 100px;
+        height: auto;
+        margin: 10px;
+        cursor: pointer;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        transition: 0.2s ease;
+      }
+      
+      input[type="radio"]:checked + .payment-img {
+        border-color: #5c6bc0;
+        box-shadow: 0 0 10px rgba(92, 107, 192, 0.6);
+      }
+
+    @media (max-width: 768px) {
+      .checkout-container {
+        flex-direction: column;
+        padding: 20px;
+        background: linear-gradient(to bottom, #FB6F92 30%, #fff 30%);
+      }
+
+      .order-summary,
+      .checkout-form {
+        width: 100%;
+        padding: 20px;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .navbar {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 10px;
+      }
+
+      .search-cart {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .buttons {
+        flex-direction: column;
+        gap: 10px;
+      }
+
+      .cancel,
+      .complete {
+        width: 100%;
+      }
+    }
+
+    .loader {
+        border: 3px solid #f3f3f3;
+        border-top: 3px solid #ffffff;
+        border-radius: 50%;
+        width: 16px;
+        height: 16px;
+        animation: spin 1s linear infinite;
+        display: inline-block;
+        vertical-align: middle;
+        margin-right: 10px;
+      }
+      
+      @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(360deg); }
+      }
+  </style>
+</head>
+<body>
+  <header class="navbar">
+    <div class="logo">
+      <img src="logo.png" alt="Blushmée Logo">
+    </div>
+        <nav>
+          <a href="index.html">Home Page</a>
+          <a href="catalog.html">Catalog</a>
+          <a href="bantuan.html">Help</a>
+        </nav>
+        <div class="search-cart">
+            <div class="search-wrapper">
+              <input type="text" placeholder="Search product" />
+            </div>
+            <span class="icons">
+                <a href="cart.html">
+                    <img src="keranjang icon.svg" alt="Keranjang" width="24" height="24">
+                </a>
+                <a href="profil.html">
+                    <img src="profile icon.svg" alt="Profil" width="24" height="24">
+                </a>
+            </span>
+        </div>
+            </header>
+
+  <main class="checkout-container">
+    <section class="order-summary">
+      <h2>Order summary</h2>
+
+      <div class="product">
+        <img src="Make Over.jpg" alt="Make Over">
+        <div>
+          <p><strong>[NEW SHADES] Make Over Hydrastay Lite Glow Cushion</strong></p>
+          <p>Jumlah: 2</p>
+          <p>Harga: Rp 191.250,00</p>
+        </div>
+      </div>
+
+      <hr>
+      <p class="total">
+        <span>Total:</span>
+        <span>Rp. 382.500,00</span>
+      </p>
+    </section>
+
+    <section class="checkout-form">
+      <h2>Complete your order</h2>
+
+      <h3>Personal Details & Shipping Address</h3>
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input type="text" id="firstName" placeholder="Enter your First name...">
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input type="text" id="lastName" placeholder="Enter your Last Name...">
+        </div>
+    
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input type="email" id="email" placeholder="Enter Your Email...">
+        </div>
+        
+        <div class="form-group">
+          <label for="phone">Phone Number</label>
+          <input type="text" id="phone" placeholder="Enter Your Phone Number...">
+        </div>
+        
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input type="text" id="address" placeholder="Your Complete address....">
+        </div>
+        
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" placeholder="Your city...">
+        </div>
+      </div>
+
+      <h3>Payment Details</h3>
+      <form>
+        <label>
+          <input type="radio" name="payment" value="Visa" style="display: none;">
+          <img src="Visa.png" alt="Visa" class="payment-img">
+        </label>
+      
+        <label>
+            <input type="radio" name="payment" value="Mandiri" style="display: none;">
+            <img src="Mandiri.png" alt="Mandiri" class="payment-img">
+          </label>
+
+        <label>
+          <input type="radio" name="payment" value="MasterCard" style="display: none;">
+          <img src="Mastercard.png" alt="MasterCard" class="payment-img">
+        </label>
+      
+
+        <label>
+            <input type="radio" name="payment" value="PayPal" style="display: none;">
+            <img src="PayPal.png" alt="PayPal" class="payment-img">
+          </label>
+      
+          <label>
+            <input type="radio" name="payment" value="Gopay" style="display: none;">
+            <img src="Gopay.png" alt="Gopay" class="payment-img">
+          </label>
+        
+      
+        <p id="selected-payment" style="margin-top: 10px; font-weight: bold;"></p>
+      </form>
+
+      <div class="form-grid">
+        <div class="form-group">
+          <label for="cardHolder">Card Holder Name</label>
+          <input type="text" id="cardHolder" placeholder="Enter cardholder's Name..." >
+        </div>
+      
+        <div class="form-group">
+          <label for="cardNumber">Card Number</label>
+          <input type="text" id="cardNumber" placeholder="Enter your Card Number..." >
+        </div>
+      
+        <div class="form-group">
+          <label for="cvv">CVV</label>
+          <input type="text" id="cvv" placeholder="Example: 1234" >
+        </div>
+      
+        <div class="form-group">
+            <label for="expDate">Expiration Date</label>
+            <input type="date" id="expDate" placeholder="DD/MM/YY">
+          </div>
+      </div>
+
+      <div class="buttons">
+        <button class="cancel" id="cancelBtn">Cancel</button>
+        <button class="complete" id="completeBtn">Complete Purchase</button>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    
+    const paymentImages = document.querySelectorAll('.payment-img');
+    const radios = document.querySelectorAll('input[type="radio"][name="payment"]');
+    const selectedPayment = document.getElementById("selected-payment");
+  
+    paymentImages.forEach((img, index) => {
+      img.addEventListener("click", () => {
+        radios[index].checked = true;
+        paymentImages.forEach(i => i.style.borderColor = "transparent");
+        img.style.borderColor = "#5c6bc0";
+        selectedPayment.textContent = "Selected Payment Method: " + radios[index].value;
+      });
+    });
+
+    document.getElementById("cancelBtn").addEventListener("click", function() {
+      const inputs = document.querySelectorAll("input");
+      inputs.forEach(input => input.value = "");
+      alert("Form telah dibersihkan.");
+    });
+
+    document.getElementById("completeBtn").addEventListener("click", function() {
+      const requiredFields = ["firstName", "lastName", "email", "phone", "address", "city", "cardHolder", "cardNumber", "cvv", "expDate"];
+      let valid = true;
+
+      requiredFields.forEach(id => {
+        const input = document.getElementById(id);
+        if (!input.value.trim()) {
+          input.style.border = "2px solid red";
+          valid = false;
+        } else {
+          input.style.border = "1px solid #ccc";
+        }
+      });
+
+      if (!valid) {
+        alert("Please complete all required fields.");
+        return;
+      }
+    
+      const confirmPurchase = confirm("Are you sure you want to complete this purchase?");
+      if (!confirmPurchase) return;
+    
+      const btn = document.getElementById("completeBtn");
+      btn.innerHTML = `<span class="loader"></span> Processing...`;
+      btn.disabled = true;
+    
+      setTimeout(() => {
+        alert("Thank you! Your purchase has been successfully completed.");
+        document.querySelectorAll("input").forEach(input => input.value = "");
+        selectedPayment.textContent = "";
+        btn.innerHTML = "Complete Purchase";
+        btn.disabled = false;
+      }, 2000);
+    });
+  </script>
+</body>
+</html>

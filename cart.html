@@ -1,0 +1,136 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cart - Blushmée</title>
+  <link rel="stylesheet" href="cart.css" />
+</head>
+<body>
+ 
+  <header class="navbar">
+    <div class="logo">
+      <img src="logo.png" alt="Blushmée Logo">
+    </div>
+        <nav>
+          <a href="index.html">Home Page</a>
+          <a href="catalog.html">Catalog</a>
+          <a href="bantuan.html">Help</a>
+        </nav>
+        <div class="header-right">
+            <input type="text" placeholder="Search product" class="search-bar">
+            <div class="icons">
+              <a href="cart.html">
+                <img src="keranjang icon.svg" alt="Keranjang" width="24" height="24">
+              </a>
+              <a href="profil.html">
+                <img src="profile icon.svg" alt="Profil" width="24" height="24">
+              </a>
+            </div>
+          </div>
+</header>
+
+  <div class="cart-container">
+ 
+    <div class="cart-item">
+      <img src="https://down-id.img.susercontent.com/file/6f0eedd3de832eb178d48d3e2975300d@resize_w900_nl.webp" alt="Pixy Lip Cream" />
+      <div class="item-details">
+        <h4>Pixy Lip Cream - Pixy Lip Matte</h4>
+        <span class="variant">02</span>
+        <div class="price-tag">Rp 58.987,00</div>
+      </div>
+      <div class="quantity-control">
+        <button>-</button>
+        <span>1</span>
+        <button>+</button>
+      </div>
+      <div class="item-total">Rp 58.987,00</div>
+    </div>
+
+ 
+    <div class="cart-item">
+      <img src="https://down-id.img.susercontent.com/file/id-11134207-7rbk8-macdrtexgi2l59.webp" alt="Skintific Cushion" />
+      <div class="item-details">
+        <h4>Skintific Perfect Stay Velvet Matte Cushion 11ml</h4>
+        <span class="variant">03</span>
+        <div class="price-tag">Rp 145.500,00</div>
+      </div>
+      <div class="quantity-control">
+        <button>-</button>
+        <span>3</span>
+        <button>+</button>
+      </div>
+      <div class="item-total">Rp 436.500,00</div>
+    </div>
+
+ 
+    <div class="cart-total">
+      <div class="total-label">Total</div>
+      <div class="total-amount">Rp 495.487,00</div>
+      <button class="checkout-btn" onclick="window.location.href='checkout.html'">Checkout</button>
+    </div>
+  </div>
+
+  <script>
+  function parseRupiah(rupiah) {
+    return parseInt(rupiah.replace("Rp", "").replace(/\./g, "").replace(/\,00/, "").trim());
+  }
+
+  function formatRupiah(angka) {
+    return 'Rp ' + angka.toLocaleString('id-ID') + ',00';
+  }
+
+  function updateTotalBayar() {
+    let total = 0;
+    document.querySelectorAll(".cart-item").forEach(item => {
+      const qty = parseInt(item.querySelector(".quantity-control span").textContent);
+      const price = parseRupiah(item.querySelector(".price-tag").textContent);
+      const subtotal = qty * price;
+      item.querySelector(".item-total").textContent = formatRupiah(subtotal);
+      total += subtotal;
+    });
+    document.querySelector(".total-amount").textContent = formatRupiah(total);
+  }
+
+  document.querySelectorAll(".cart-item").forEach(item => {
+    const minusBtn = item.querySelector(".quantity-control button:first-child");
+    const plusBtn = item.querySelector(".quantity-control button:last-child");
+    const qtySpan = item.querySelector(".quantity-control span");
+
+    minusBtn.addEventListener("click", () => {
+      let qty = parseInt(qtySpan.textContent);
+      if (qty > 0) {
+        qty--;
+        qtySpan.textContent = qty;
+        updateTotalBayar();
+      }
+    });
+
+    plusBtn.addEventListener("click", () => {
+      let qty = parseInt(qtySpan.textContent);
+      qty++;
+      qtySpan.textContent = qty;
+      updateTotalBayar();
+    });
+  });
+ const searchInput = document.querySelector('.search-cart input');
+  const cartItems = document.querySelectorAll('.cart-item');
+
+  searchInput.addEventListener('input', function () {
+    const keyword = this.value.toLowerCase();
+
+    cartItems.forEach(item => {
+      const title = item.querySelector('h4').textContent.toLowerCase();
+      if (title.includes(keyword)) {
+        item.style.display = 'flex';
+      } else {
+        item.style.display = 'none';
+      }
+    });
+  });
+  updateTotalBayar();
+</script>
+
+
+</body>
+</html>

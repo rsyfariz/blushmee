@@ -1,0 +1,148 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #FB6F92;
+}
+
+.container {
+  display: flex;
+  height: 100vh;
+  position: relative;
+}
+
+.left-panel {
+  position: relative;
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* Tengah secara horizontal */
+  padding: 80px 50px;
+  color: white;
+  background-color: #FB6F92;
+  text-align: center;
+}
+
+/* Ganti tulisan brand dengan logo */
+.brand-logo {
+  width: 220px;
+  height: auto;
+  margin: 0 0 10px 100px;
+  z-index: 1;
+}
+
+.tagline {
+  font-size: 14px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  color: #000;
+  margin: 0 0 10px 100px;
+}
+
+.desc {
+  font-size: 16px;
+  color: #ffffff;
+  margin-left: 100px;
+}
+
+.right-panel {
+  flex: 1;
+  position: relative;
+  background-color: #FB6F92;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.right-flower {
+  position: absolute;
+  top: -60px;
+  right: -40px;
+  width: 320px;
+  z-index: 1000;
+}
+
+.login-box {
+  width: 100%;
+  max-width: 420px;
+  background-color: #fff;
+  padding: 30px;
+  border-radius: 8px;
+  box-shadow: 0 0 15px rgba(0,0,0,0.1);
+  z-index: 3;
+  text-align: left;
+}
+
+.login-box h2 {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.login-box label {
+  display: block;
+  font-size: 14px;
+  font-weight: 600;
+  margin-bottom: 5px;
+}
+
+.login-box input {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 16px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 14px;
+}
+
+.login-btn {
+  width: 100%;
+  background-color: #3b4cc0;
+  color: white;
+  padding: 12px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+  text-align: center;
+  
+}
+
+.options {
+  display: flex;
+  justify-content: space-between;
+  font-size: 12px;
+  margin-top: 10px;
+}
+
+.divider {
+  text-align: center;
+  font-size: 12px;
+  color: #999;
+  margin: 20px 0;
+}
+
+.social-login {
+  text-align: center;
+}
+
+.social-login img {
+  margin: 0 10px;
+  width: 25px;
+  cursor: pointer;
+}
+
+.register {
+  font-size: 13px;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.register a {
+  text-decoration: none;
+  font-weight: bold;
+  color: #333;
+}

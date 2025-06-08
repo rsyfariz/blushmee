@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profil Saya - Blushmée</title>
+    <link rel="stylesheet" href="profil.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="logo">
+        <img src="blushme.png" alt="Logo Blushmée" class="logo-img" />
+      </div>
+
+      <nav class="nav">
+        <a href="index.html">Home Page</a>
+        <a href="catalog.html">Catalog</a>
+        <a href="bantuan.html">Help</a>
+      </nav>
+
+      <div class="nav-actions">
+        <input type="text" placeholder="Search product" class="search-box" />
+        <a href="cart.html" class="icon">
+          <img src="keranjang icon.svg" alt="Cart" width="24" height="24" />
+        </a>
+        <a href="profil.html" class="icon">
+          <img src="profile icon.svg" alt="Profile" width="24" height="24" />
+        </a>
+      </div>
+    </header>
+
+    <main class="profile-container">
+      <aside class="sidebar">
+        <img src="memoji.jpeg" class="profile-pic-circle" alt="Avatar" />
+        <ul class="menu">
+          <li class="menu-section">
+            <img src="memoji.jpeg" class="menu-icon" alt="Memoji" /> Akun Saya
+          </li>
+          <li class="submenu">Profil</li>
+          <li class="submenu">Alamat</li>
+          <li class="submenu">Ubah Password</li>
+          <li class="menu-section">📦 Pesanan</li>
+          <li class="menu-section">🎟️ Voucher</li>
+        </ul>
+      </aside>
+
+      <section class="profile-form">
+        <h2>Profil Saya</h2>
+        <p>Kelola Informasi Profil Anda</p>
+
+        <form>
+          <label>Username</label>
+          <input type="text" placeholder="" />
+
+          <label>Nama</label>
+          <input type="text" placeholder="Enter Your Name..." />
+
+          <label>Email</label>
+          <input type="email" placeholder="Enter Your Email..." />
+
+          <label>No Telepon</label>
+          <input type="text" placeholder="Enter Your Phone Number..." />
+
+          <label>Jenis Kelamin</label>
+          <input type="text" placeholder="" />
+
+          <label>Tanggal Lahir</label>
+          <input type="date" />
+
+          <button type="submit" class="save-btn">Simpan</button>
+        </form>
+
+        <div class="photo-section">
+          <div class="photo-box">
+            <img src="memoji.jpeg" alt="Foto Profil" class="avatar-img" />
+          </div>
+          <button>Pilih Gambar</button>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
